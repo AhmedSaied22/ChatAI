@@ -12,9 +12,10 @@ class ChatAiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.blueAccent,
+        scaffoldBackgroundColor: Color(0xff0d0d0f),
         primaryColor: Colors.deepOrange,
       ),
       home: HomeView(),
