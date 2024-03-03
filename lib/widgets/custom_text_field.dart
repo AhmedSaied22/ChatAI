@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
             Color.fromARGB(255, 63, 63, 66),
             const Color(0xff202021),
           ]),
-          borderRadius: BorderRadius.circular(40)),
+          borderRadius: BorderRadius.circular(24)),
       child: TextFormField(
         controller: controller,
         onChanged: onChanged,
@@ -51,7 +51,7 @@ class CustomTextField extends StatelessWidget {
 
   OutlineInputBorder buildBorder([color]) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(40),
+      borderRadius: BorderRadius.circular(24),
       borderSide:
           BorderSide(color: color ?? const Color(0xff202021).withOpacity(0.1)),
     );
