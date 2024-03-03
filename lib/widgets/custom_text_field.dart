@@ -17,32 +17,43 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      onChanged: onChanged,
-      onSaved: onSaved,
-      validator: (value) {
-        if (value?.isEmpty ?? true) {
-          return 'Field is required';
-        } else {
-          return null;
-        }
-      },
-      cursorColor: kPrimaryColor,
-      maxLines: maxLines,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(color: kPrimaryColor.withOpacity(0.8)),
-        enabledBorder: buildBorder(),
-        focusedBorder: buildBorder(kPrimaryColor),
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 63, 63, 66),
+            const Color(0xff202021),
+          ]),
+          borderRadius: BorderRadius.circular(40)),
+      child: TextFormField(
+        controller: controller,
+        onChanged: onChanged,
+        onSaved: onSaved,
+        validator: (value) {
+          if (value?.isEmpty ?? true) {
+            return 'Field is required';
+          } else {
+            return null;
+          }
+        },
+        cursorColor: kPrimaryColor,
+        maxLines: maxLines,
+        decoration: InputDecoration(
+          fillColor: const Color(0xff202021),
+          filled: false,
+          hintText: hintText,
+          hintStyle: TextStyle(color: kPrimaryColor.withOpacity(0.8)),
+          enabledBorder: buildBorder(),
+          focusedBorder: buildBorder(kPrimaryColor),
+        ),
       ),
     );
   }
 
   OutlineInputBorder buildBorder([color]) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(16),
-      borderSide: BorderSide(color: color ?? Colors.white.withOpacity(0.8)),
+      borderRadius: BorderRadius.circular(40),
+      borderSide:
+          BorderSide(color: color ?? const Color(0xff202021).withOpacity(0.1)),
     );
   }
 }

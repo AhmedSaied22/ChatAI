@@ -1,3 +1,4 @@
+import 'package:chat_ai/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -32,12 +33,16 @@ class _HomeViewState extends State<HomeView> {
               child: ListView(),
             ),
             Container(
-              height: 100,
-              color: Colors.amber,
-              child: Row(children: [
+              child: const Row(children: [
                 Expanded(
-                  child: TextField(),
-                )
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                    child: CustomTextField(
+                      hintText: 'Text',
+                    ),
+                  ),
+                ),
+                SizedBox(),
               ]),
             ),
           ],

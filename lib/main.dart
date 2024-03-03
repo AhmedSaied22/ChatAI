@@ -15,10 +15,10 @@ class ChatAiApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color(0xff0d0d0f),
-        primaryColor: Colors.deepOrange,
+        scaffoldBackgroundColor: const Color(0xff0d0d0f),
+        primaryColor: const Color(0xff202021),
       ),
-      home: HomeView(),
+      home: const HomeView(),
     );
   }
 }

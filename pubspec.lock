@@ -99,6 +99,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.2"
+  gradient_textfield:
+    dependency: "direct main"
+    description:
+      name: gradient_textfield
+      sha256: df7bfc00d701af4449d93f5d26ec49d27744041b6f73c780992790fb9b8ca66c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   http:
     dependency: transitive
     description:
@@ -250,4 +258,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.6 <4.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.17.0"
