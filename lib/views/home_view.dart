@@ -1,4 +1,4 @@
-import 'package:chat_ai/constants.dart';
+import 'package:chat_ai/utils/constants.dart';
 import 'package:chat_ai/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

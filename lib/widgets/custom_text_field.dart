@@ -1,4 +1,4 @@
-import 'package:chat_ai/constants.dart';
+import 'package:chat_ai/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
