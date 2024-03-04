@@ -30,13 +30,14 @@ environment:
 dependencies:
   bloc: null
   cupertino_icons: ^1.0.2
+  dio: null
   flutter:
     sdk: flutter
   flutter_bloc: null
-  dio:
   font_awesome_flutter: ^10.7.0
   google_generative_ai: ^0.2.2
   gradient_textfield: ^0.0.1
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -19,9 +19,9 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
+          gradient: const LinearGradient(colors: [
             Color.fromARGB(255, 63, 63, 66),
-            const Color(0xff202021),
+            Color(0xff202021),
           ]),
           borderRadius: BorderRadius.circular(24)),
       child: TextFormField(

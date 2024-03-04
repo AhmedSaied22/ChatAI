@@ -1,7 +1,12 @@
-import 'package:chat_ai/utils/constants.dart';
+import 'package:chat_ai/bloc/chat_bloc_bloc.dart';
+import 'package:chat_ai/models/chat_models.dart';
+import 'package:lottie/lottie.dart';
+import 'package:chat_ai/widgets/chat_bubble_builder.dart';
+import 'package:chat_ai/widgets/custom_app_bar.dart';
 import 'package:chat_ai/widgets/custom_text_field.dart';
+import 'package:chat_ai/widgets/send_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -11,63 +16,63 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  TextEditingController controller = TextEditingController();
+  final ChatBlocBloc chatBloc = ChatBlocBloc();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Container(
-          width: double.maxFinite,
-          height: double.maxFinite,
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage(
-          //       'assets/images/bgMonster.png',
-          //     ),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          child: Column(
-            children: [
-              Container(
-                height: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: BlocConsumer<ChatBlocBloc, ChatBlocState>(
+        bloc: chatBloc,
+        listener: (context, state) {},
+        builder: (context, state) {
+          switch (state.runtimeType) {
+            case ChatSuccessState:
+              List<ChatModel> messages = (state as ChatSuccessState).messages;
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
                   children: [
-                    Text('Eternal Sunshine',
-                        style: TextStyle(fontSize: 24, fontFamily: 'Carter One')),
-                    Icon(
-                      Icons.image_search,
+                    CustomAppBar(),
+                    Expanded(
+                      child: ChatBubbleBuilder(messages: messages),
+                    ),
+                    if (chatBloc.loading)
+                      Lottie.asset(
+                        'assets/animations/dpoolLoader.json',
+                        height: 100,
+                        width: 100,
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Row(children: [
+                        Expanded(
+                          child: CustomTextField(
+                            controller: controller,
+                            hintText: 'Text',
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        InkWell(
+                          onTap: () {
+                            if (controller.text.isNotEmpty) {
+                              String text = controller.text;
+                              controller.clear();
+                              chatBloc.add(ChatGenerateNewTextMessageEvent(
+                                  inputMessage: text));
+                            }
+                          },
+                          child: const CustomSendIcon(),
+                        ),
+                      ]),
                     ),
                   ],
                 ),
-              ),
-              Expanded(
-                child: ListView(),
-              ),
-              Container(
-                child: const Row(children: [
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 32),
-                      child: CustomTextField(
-                        hintText: 'Text',
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 12),
-                  CircleAvatar(
-                    backgroundColor: kPrimaryColor,
-                    radius: 32,
-                    child: Center(
-                      child: Icon(FontAwesomeIcons.solidPaperPlane),
-                    ),
-                  ),
-                ]),
-              ),
-            ],
-          ),
-        ),
+              );
+            default:
+              return const SizedBox();
+          }
+        },
       ),
     );
   }

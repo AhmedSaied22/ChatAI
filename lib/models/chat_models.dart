@@ -1,14 +1,26 @@
 class ChatModel {
   final String role;
-  final dynamic parts;
+  final List<ChatPartModel> parts;
 
   ChatModel({required this.role, required this.parts});
-  factory ChatModel.fromjson(jsonData) {
+
+  factory ChatModel.fromJson(Map<String, dynamic> jsonData) {
+    final List<dynamic> partsData = jsonData['parts'];
+    final List<ChatPartModel> parts = partsData.map((partData) {
+      return ChatPartModel.fromJson(partData);
+    }).toList();
+
     return ChatModel(
-        role: jsonData['contents'][0]['role'],
-        parts: jsonData['rating'] == null
-            ? null
-            : ChatPartModel.fromJson(jsonData['text']));
+      role: jsonData['contents'][0]['role'],
+      parts: parts,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'role': role,
+      'parts': parts.map((x) => x.toJson()).toList(),
+    };
   }
 }
 
@@ -16,7 +28,41 @@ class ChatPartModel {
   final String text;
 
   ChatPartModel({required this.text});
-  factory ChatPartModel.fromJson(jsonData) {
-    return ChatPartModel(text: jsonData['text']);
+
+  factory ChatPartModel.fromJson(Map<String, dynamic> jsonData) {
+    return ChatPartModel(
+      text: jsonData['text'] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'text': text,
+    };
   }
 }
+// class ChatModel {
+//   final String role;
+//   final List<ChatPartModel> parts;
+
+//   ChatModel({required this.role, required this.parts});
+//   factory ChatModel.fromjson(jsonData) {
+//     final List<dynamic> partsData = jsonData['parts'];
+//     final List<ChatPartModel> parts = partsData.map((partData) {
+//       return ChatPartModel.fromJson(partData);
+//     }).toList();
+//     return ChatModel(
+//       role: jsonData['contents'][0]['role'],
+//       parts: parts,
+//     );
+//   }
+// }
+
+// class ChatPartModel {
+//   final String text;
+
+//   ChatPartModel({required this.text});
+//   factory ChatPartModel.fromJson(jsonData) {
+//     return ChatPartModel(text: jsonData['text']);
+//   }
+// }

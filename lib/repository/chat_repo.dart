@@ -5,31 +5,13 @@ import 'package:chat_ai/utils/constants.dart';
 import 'package:dio/dio.dart';
 
 class ChatRepo {
-  static chatTextGenerationRepo(List<ChatModel> previousMessages) async {
+  static Future<String> chatTextGenerationRepo(
+      List<ChatModel> previousMessages) async {
     try {
       Dio dio = Dio();
       var response = await dio
           .post('$baseUrl/gemini-1.0-pro:generateContent?key=$apiKey', data: {
-        "contents": [
-          {
-            "role": "user",
-            "parts": [
-              {"text": "hello"}
-            ]
-          },
-          {
-            "role": "model",
-            "parts": [
-              {"text": "Hi there! How can I help you today?"}
-            ]
-          },
-          {
-            "role": "user",
-            "parts": [
-              {"text": "How are you?"}
-            ]
-          }
-        ],
+        "contents": previousMessages.map((e) => e.toJson()).toList(),
         "generationConfig": {
           "temperature": 0.9,
           "topK": 1,
@@ -56,9 +38,13 @@ class ChatRepo {
           }
         ]
       });
-      log(response.toString());
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        return response.data['candidates'][0]['content']['parts'][0]['text'];
+      }
+      return '';
     } catch (e) {
       log(e.toString());
     }
+    return '';
   }
 }
