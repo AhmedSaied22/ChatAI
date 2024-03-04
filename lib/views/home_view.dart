@@ -32,13 +32,13 @@ class _HomeViewState extends State<HomeView> {
               Container(
                 height: 100,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Eternal Sunchine BOT'),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.image_search,
-                        ))
+                    Text('Eternal Sunshine',
+                        style: TextStyle(fontSize: 24, fontFamily: 'Carter One')),
+                    Icon(
+                      Icons.image_search,
+                    ),
                   ],
                 ),
               ),
