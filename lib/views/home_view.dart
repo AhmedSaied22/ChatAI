@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   TextEditingController controller = TextEditingController();
   final ChatBlocBloc chatBloc = ChatBlocBloc();
-
+  final _controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +30,10 @@ class _HomeViewState extends State<HomeView> {
             case ChatSuccessState:
               List<ChatModel> messages = (state as ChatSuccessState).messages;
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    CustomAppBar(),
+                    const CustomAppBar(),
                     Expanded(
                       child: ChatBubbleBuilder(messages: messages),
                     ),
@@ -50,6 +50,13 @@ class _HomeViewState extends State<HomeView> {
                           child: CustomTextField(
                             controller: controller,
                             hintText: 'Text',
+                            onSubmitted: (data) {
+                              _controller.animateTo(
+                                _controller.position.maxScrollExtent,
+                                duration: Duration(minutes: 1),
+                                curve: Curves.bounceInOut,
+                              );
+                            },
                           ),
                         ),
                         const SizedBox(width: 12),

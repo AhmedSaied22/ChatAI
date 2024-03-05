@@ -9,12 +9,14 @@ class CustomTextField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.controller,
+    this.onSubmitted,
   });
   final String hintText;
   final int maxLines;
   final void Function(String?)? onSaved;
   final Function(String)? onChanged;
   final TextEditingController? controller;
+  final Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +27,7 @@ class CustomTextField extends StatelessWidget {
           ]),
           borderRadius: BorderRadius.circular(24)),
       child: TextFormField(
+        onFieldSubmitted: onSubmitted,
         controller: controller,
         onChanged: onChanged,
         onSaved: onSaved,

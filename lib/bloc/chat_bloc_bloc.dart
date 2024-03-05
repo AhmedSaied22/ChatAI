@@ -22,7 +22,7 @@ class ChatBlocBloc extends Bloc<ChatBlocEvent, ChatBlocState> {
     emit(ChatSuccessState(messages: messages));
     loading = true;
     String generatedText = await ChatRepo.chatTextGenerationRepo(messages);
-    if (generatedText.length > 0) {
+    if (generatedText.isNotEmpty) {
       messages.add(ChatModel(
           role: 'model', parts: [ChatPartModel(text: generatedText)]));
       emit(ChatSuccessState(messages: messages));

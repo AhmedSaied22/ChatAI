@@ -44,8 +44,9 @@ class ChatBubbleBuilder extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: kPrimaryColor)),
                           Padding(
-                            padding: const EdgeInsets.only(right: 0, left: 4),
-                            child: Text(messages[index].parts.first.text),
+                            padding: const EdgeInsets.only(right: 0, left: 2),
+                            child: SelectableText(
+                                messages[index].parts.first.text),
                           ),
                         ],
                       )),
@@ -75,7 +76,8 @@ class ChatBubbleBuilder extends StatelessWidget {
                                   color: kSecondaryColor)),
                           Padding(
                             padding: const EdgeInsets.only(right: 0, left: 2),
-                            child: Text(messages[index].parts.first.text),
+                            child: SelectableText(
+                                messages[index].parts.first.text),
                           ),
                         ],
                       )),
