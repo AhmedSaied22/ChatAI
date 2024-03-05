@@ -2,7 +2,7 @@ import 'package:chat_ai/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
+  CustomTextField({
     super.key,
     required this.hintText,
     this.maxLines = 1,
@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final TextEditingController? controller;
   final Function(String)? onSubmitted;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +34,7 @@ class CustomTextField extends StatelessWidget {
         onSaved: onSaved,
         validator: (value) {
           if (value?.isEmpty ?? true) {
-            return 'Field is required';
+            return '    Field is required';
           } else {
             return null;
           }
@@ -41,10 +42,13 @@ class CustomTextField extends StatelessWidget {
         cursorColor: kPrimaryColor,
         maxLines: maxLines,
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           fillColor: const Color(0xff202021),
           filled: false,
           hintText: hintText,
-          hintStyle: TextStyle(color: kPrimaryColor.withOpacity(0.8)),
+          hintStyle: TextStyle(
+              color: Colors.white.withOpacity(0.5),
+              fontWeight: FontWeight.w400),
           enabledBorder: buildBorder(),
           focusedBorder: buildBorder(kPrimaryColor),
         ),

@@ -17,7 +17,7 @@ class ChatBubbleBuilder extends StatelessWidget {
       itemBuilder: (context, index) {
         if (messages[index].parts.isEmpty) {
           // Handle the case when the parts list is empty
-          return Text('No parts in this message');
+          return const Text('No parts in this message');
         } else {
           return messages[index].role == 'user'
               ? Align(
@@ -73,7 +73,7 @@ class ChatBubbleBuilder extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: kSecondaryColor)),
+                                  color: userColor)),
                           Padding(
                             padding: const EdgeInsets.only(right: 0, left: 2),
                             child: SelectableText(

@@ -1,5 +1,5 @@
 import 'package:chat_ai/firebase_options.dart';
-import 'package:chat_ai/views/home_view.dart';
+import 'package:chat_ai/views/login_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,6 @@ void main() async {
 class ChatAiApp extends StatelessWidget {
   const ChatAiApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +24,7 @@ class ChatAiApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xff0d0d0f),
         primaryColor: const Color(0xff202021),
       ),
-      home: const HomeView(),
+      home: const LoginView(),
     );
   }
 }

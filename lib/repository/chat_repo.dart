@@ -41,10 +41,9 @@ class ChatRepo {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return response.data['candidates'][0]['content']['parts'][0]['text'];
       }
-      return '';
+      return 'Loading';
     } catch (e) {
-      log(e.toString());
+      return 'oops there was an error, try later';
     }
-    return '';
   }
 }

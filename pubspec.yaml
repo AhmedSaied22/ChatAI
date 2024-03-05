@@ -29,22 +29,30 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: null
+  cloud_firestore: ^4.15.7
   cupertino_icons: ^1.0.2
   dio: null
+  firebase_auth: ^4.17.6
   firebase_core: ^2.25.5
   flutter:
     sdk: flutter
   flutter_bloc: null
+  flutter_launcher_icons: ^0.13.1
   font_awesome_flutter: ^10.7.0
   google_generative_ai: ^0.2.2
   gradient_textfield: ^0.0.1
   lottie: ^3.1.0
+  modal_progress_hud_nsn: ^0.5.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icons.png"
+  min_sdk_android: 21
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
