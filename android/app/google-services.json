@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649477606580",
+    "project_id": "geminiaiproject-f6dd5",
+    "storage_bucket": "geminiaiproject-f6dd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649477606580:android:34136010e4dd816e2d5be1",
+        "android_client_info": {
+          "package_name": "com.example.chat_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVVnx6Z7dKtCm0UGYECkKaTujKIpsuvgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

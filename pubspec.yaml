@@ -31,6 +31,7 @@ dependencies:
   bloc: null
   cupertino_icons: ^1.0.2
   dio: null
+  firebase_core: ^2.25.5
   flutter:
     sdk: flutter
   flutter_bloc: null
