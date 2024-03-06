@@ -1,10 +1,12 @@
+import 'package:chat_ai/utils/constants.dart';
+
 class ChatModel {
   final String role;
   final List<ChatPartModel> parts;
 
   ChatModel({required this.role, required this.parts});
 
-  factory ChatModel.fromJson(Map<String, dynamic> jsonData) {
+  factory ChatModel.fromJson(jsonData) {
     final List<dynamic> partsData = jsonData['parts'];
     final List<ChatPartModel> parts = partsData.map((partData) {
       return ChatPartModel.fromJson(partData);
@@ -31,13 +33,13 @@ class ChatPartModel {
 
   factory ChatPartModel.fromJson(Map<String, dynamic> jsonData) {
     return ChatPartModel(
-      text: jsonData['text'] ?? '',
+      text: jsonData[kMessage] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'text': text,
+      kMessage: text,
     };
   }
 }

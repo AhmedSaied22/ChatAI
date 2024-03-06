@@ -12,6 +12,7 @@ class ChatBubbleBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var name = ModalRoute.of(context)!.settings.arguments;
     return ListView.builder(
       itemCount: messages.length,
       itemBuilder: (context, index) {
@@ -33,13 +34,18 @@ class ChatBubbleBuilder extends StatelessWidget {
                           topRight: Radius.circular(32),
                           bottomRight: Radius.circular(32),
                         ),
-                        color: userColor,
+                        gradient: LinearGradient(
+                          colors: userBubbleColor,
+                          // Adjust the stops to reduce the spread of the first color
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('User:',
-                              style: TextStyle(
+                          Text('${name as String}:',
+                              style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: kPrimaryColor)),

@@ -17,10 +17,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  String? email;
-
-  String? password;
-
+  String? email, password, name;
   bool isLoading = false;
 
   GlobalKey<FormState> formKey = GlobalKey();
@@ -83,6 +80,12 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                   ],
                 ),
+                CustomTextField(
+                  onChanged: (data) {
+                    name = data;
+                  },
+                  hintText: 'Your Name',
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -114,6 +117,7 @@ class _RegisterViewState extends State<RegisterView> {
                         Navigator.pushNamed(
                           context,
                           ChatView.id,
+                          arguments: name,
                         );
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {

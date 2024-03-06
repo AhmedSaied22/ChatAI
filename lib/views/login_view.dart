@@ -109,10 +109,8 @@ class _LoginViewState extends State<LoginView> {
                       setState(() {});
                       try {
                         await loginUser();
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ChatView();
-                        }));
+                        Navigator.pushNamed(context, ChatView.id,
+                            arguments: email);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
                           showSnackBar(context, 'user not found');
@@ -145,10 +143,10 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return RegisterView();
-                        }));
+                        Navigator.pushNamed(
+                          context,
+                          RegisterView.id,
+                        );
                       },
                       child: const Text(
                         'Sign Up',

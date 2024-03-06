@@ -11,11 +11,11 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Eternal Sunshine',
-              style: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'Carter One',
-                  color: kPrimaryColor)),
+          // Text('Eternal Sunshine',
+          //     style: TextStyle(
+          //         fontSize: 12,
+          //         fontFamily: 'Carter One',
+          //         color: kPrimaryColor)),
           Icon(
             Icons.image_search,
             color: kPrimaryColor,
