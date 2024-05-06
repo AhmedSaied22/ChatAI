@@ -29,7 +29,7 @@ class ChatAiApp extends StatelessWidget {
       routes: {
         LoginView.id: (context) => const LoginView(),
         RegisterView.id: (context) => const RegisterView(),
-        ChatView.id: (context) => ChatView(),
+        ChatView.id: (context) => const ChatView(),
       },
       initialRoute: LoginView.id,
     );

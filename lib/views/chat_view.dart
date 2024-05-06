@@ -1,11 +1,11 @@
 import 'package:chat_ai/bloc/chat_bloc_bloc.dart';
 import 'package:chat_ai/models/chat_models.dart';
 import 'package:chat_ai/utils/constants.dart';
+import 'package:chat_ai/widgets/chat_app_bar.dart';
+import 'package:chat_ai/widgets/drawer_body.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:chat_ai/widgets/chat_bubble_builder.dart';
-import 'package:chat_ai/widgets/custom_app_bar.dart';
 import 'package:chat_ai/widgets/custom_text_field.dart';
 import 'package:chat_ai/widgets/send_icon.dart';
 import 'package:flutter/material.dart';
@@ -28,10 +28,18 @@ TextEditingController controller = TextEditingController();
 class _ChatViewState extends State<ChatView> {
   TextEditingController controller = TextEditingController();
   final ChatBlocBloc chatBloc = ChatBlocBloc();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void openDrawer() {
+    _scaffoldKey.currentState?.openEndDrawer();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    String name = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer:
+          const FractionallySizedBox(widthFactor: 0.5, child: MyDrawer()),
       body: BlocConsumer<ChatBlocBloc, ChatBlocState>(
         bloc: chatBloc,
         listener: (context, state) {},
@@ -56,45 +64,20 @@ class _ChatViewState extends State<ChatView> {
                     child: SafeArea(
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
                             children: [
-                              Row(
-                                children: [
-                                  const Icon(
-                                    FontAwesomeIcons.solidCircleUser,
-                                    color: kPrimaryColor,
-                                    size: 45,
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Hello, Let\'s talk!',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: kPrimaryColor
-                                                  .withOpacity(0.6))),
-                                      Text(name,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.white
-                                                  .withOpacity(0.8))),
-                                    ],
-                                  ),
-                                ],
+                              const ChatAppBar(),
+                              IconButton(
+                                icon: const Icon(Icons.menu),
+                                onPressed: openDrawer,
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Expanded(

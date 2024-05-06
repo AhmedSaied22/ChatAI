@@ -13,7 +13,7 @@ List<Color> backgroundColorList = [
   const Color.fromARGB(255, 29, 33, 39),
   userColor,
 ];
-const apiKey = 'AIzaSyCqg0E3XkBm_-GvTgR-aNG9gMjS8lgRwPI';
+const apiKey = 'YOUR API KEY';
 const baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models';
 const kMessagesCollections = 'messages';
 const kMessage = 'text';
